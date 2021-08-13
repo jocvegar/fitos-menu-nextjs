@@ -1,9 +1,132 @@
-import type { NextPage } from 'next'
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
+import React, { useEffect } from "react";
+import type { NextPage } from "next";
+import Head from "next/head";
+import Image from "next/image";
+import styles from "../styles/Home.module.css";
+// mui
+import Typography from "@material-ui/core/Typography";
+import Hidden from "@material-ui/core/Hidden";
+import {
+  createTheme,
+  ThemeProvider,
+  makeStyles,
+} from "@material-ui/core/styles";
+import Drawer from "@material-ui/core/Drawer";
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+import Box from "@material-ui/core/Box";
+import ListItemText from "@material-ui/core/ListItemText";
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import logo from "../public/images/logo.png";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import Nepe from "../components/Nepe";
+
+const drawerWidth = 240;
+
+const theme = createTheme({
+  typography: {
+    fontFamily: ["MYRIADPRO", "Helvetica Neue", "sans-serif"].join(","),
+  },
+  palette: {
+    primary: {
+      main: "#de5200",
+    },
+    secondary: {
+      main: "#ff9d2d",
+    },
+  },
+});
+
+const cardStyles = makeStyles({
+  root: {
+    maxWidth: 345,
+    borderRadius: "1rem",
+    margin: "0 auto",
+  },
+  main: {
+    display: "flex",
+  },
+  media: {
+    height: 300,
+  },
+  drawer: {
+    width: drawerWidth,
+    flexShrink: 0,
+  },
+  drawerPaper: {
+    width: drawerWidth,
+    backgroundColor: "whitesmoke",
+    borderRight: "none",
+  },
+  content: {
+    flexGrow: 1,
+  },
+});
 
 const Home: NextPage = () => {
+  const classes = cardStyles();
+
+  useEffect(() => {
+    AOS.init({
+      once: true,
+    });
+  }, []);
+
+  const goToTop = (): void => {
+    console.log("I was clicked");
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+  };
+
+  const goToElment = (idx: number): void => {
+    let elementId = "";
+    console.log("idx ", idx);
+    switch (idx) {
+      case 0:
+        elementId = "entrees";
+        break;
+      case 1:
+        elementId = "sandwiches";
+        break;
+      case 2:
+        elementId = "burgers";
+        break;
+      case 3:
+        elementId = "tenders";
+        break;
+      case 4:
+        elementId = "suaces";
+        break;
+      case 5:
+        elementId = "salads";
+        break;
+      case 6:
+        elementId = "boxes";
+        break;
+      case 7:
+        elementId = "pizzas";
+        break;
+      case 8:
+        elementId = "drinks";
+        break;
+      default:
+        elementId = "entrees";
+        break;
+    }
+    const element = document.getElementById(elementId)!;
+    const elementPosition = element.offsetTop;
+
+    window.scrollTo({
+      top: elementPosition - 45, //add your necessary value
+      behavior: "smooth", //Smooth transition to roll
+    });
+  };
+
   return (
     <div className={styles.container}>
       <Head>
@@ -12,61 +135,75 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h2>Documentation &rarr;</h2>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h2>Learn &rarr;</h2>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
+      <div className={`${classes.main} App`}>
+        <ThemeProvider theme={theme}>
+          <AppBar
+            position="fixed"
+            style={{ backgroundColor: "whitesmoke", zIndex: 9999 }}
           >
-            <h2>Examples &rarr;</h2>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
+            <Toolbar>
+              <Image
+                src={logo}
+                height="50"
+                width="50"
+                alt="logo"
+                onClick={goToTop}
+              />
+            </Toolbar>
+          </AppBar>
+          <Hidden mdDown>
+            <Drawer
+              className={classes.drawer}
+              variant="permanent"
+              classes={{
+                paper: classes.drawerPaper,
+              }}
+              anchor="left"
+            >
+              <Box style={{ marginTop: "4em" }}>
+                <Image src={logo} height="150" width="250" alt="logo" />
+              </Box>
 
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h2>Deploy &rarr;</h2>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
-      </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <span className={styles.logo}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-          </span>
-        </a>
-      </footer>
+              <List style={{ marginTop: "1em" }} className="navDrawer">
+                {[
+                  "Para Picar",
+                  "Sandwiches",
+                  "Burgers",
+                  "Chicken Tenders",
+                  "Salsas",
+                  "Ensaladas",
+                  "Boxes",
+                  "Pizzas",
+                  "Drinks",
+                ].map((text, idx) => (
+                  <ListItem button key={text} style={{ textAlign: "end" }}>
+                    <ListItemText
+                      primary={
+                        <React.Fragment>
+                          <Typography
+                            component="span"
+                            variant="h4"
+                            color="primary"
+                            onClick={() => goToElment(idx)}
+                          >
+                            {text}
+                          </Typography>
+                        </React.Fragment>
+                      }
+                    />
+                  </ListItem>
+                ))}
+              </List>
+            </Drawer>
+          </Hidden>
+          <main className={`${classes.content} pa-0 pa-md-8 mt-5`}>
+            {/* <Itemlist /> */}
+            {<Nepe />}
+          </main>
+        </ThemeProvider>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
