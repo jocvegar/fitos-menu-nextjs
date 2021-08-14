@@ -1,7 +1,8 @@
+/* eslint-disable @next/next/no-img-element */
 import React, { useEffect } from "react";
+import { GetStaticProps } from "next";
 import type { NextPage } from "next";
 import Head from "next/head";
-import Image from "next/image";
 // styles
 import styles from "../styles/Home.module.css";
 // mui
@@ -20,8 +21,7 @@ import ListItemText from "@material-ui/core/ListItemText";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 // components
-import logo from "../public/images/logo.png";
-import ItemList from "../components/itemList";
+import ItemList from "../components/ItemList";
 // utils
 import firebase from "../firebase/clientApp";
 import { useCollection } from "react-firebase-hooks/firestore";
@@ -71,7 +71,7 @@ const cardStyles = makeStyles({
   },
 });
 
-const Home: NextPage = () => {
+const Home: NextPage = ({ menu }: any) => {
   const classes = cardStyles();
 
   useEffect(() => {
@@ -80,10 +80,10 @@ const Home: NextPage = () => {
     });
   }, []);
 
-  const [menu, menuLoading, menuError] = useCollection(
-    firebase.firestore().collection("menu"),
-    {}
-  );
+  // const [menu, menuLoading, menuError] = useCollection(
+  //   firebase.firestore().collection("menu"),
+  //   {}
+  // );
 
   const goToTop = (): void => {
     window.scroll({
@@ -151,13 +151,7 @@ const Home: NextPage = () => {
             style={{ backgroundColor: "whitesmoke", zIndex: 9999 }}
           >
             <Toolbar>
-              <Image
-                src={logo}
-                height="50"
-                width="50"
-                alt="logo"
-                onClick={goToTop}
-              />
+              <img src="/images/logo.png" alt="logo" height="50" width="50" />
             </Toolbar>
           </AppBar>
           <Hidden mdDown>
@@ -170,7 +164,12 @@ const Home: NextPage = () => {
               anchor="left"
             >
               <Box style={{ marginTop: "4em" }}>
-                <Image src={logo} height="150" width="250" alt="logo" />
+                <img
+                  src="/images/logo.png"
+                  alt="logo"
+                  height="150"
+                  width="250"
+                />
               </Box>
 
               <List style={{ marginTop: "1em" }} className="navDrawer">
@@ -206,7 +205,7 @@ const Home: NextPage = () => {
             </Drawer>
           </Hidden>
           <main className={`${classes.content} pa-0 pa-md-8 mt-5`}>
-            {!menuLoading && <ItemList menu={menu} />}
+            <ItemList menu={menu} />
           </main>
         </ThemeProvider>
       </div>
@@ -215,3 +214,30 @@ const Home: NextPage = () => {
 };
 
 export default Home;
+
+export const getStaticProps: GetStaticProps = async (context) => {
+  let menu: IMenuItem[] = [];
+  try {
+    const querySnapshot = await firebase.firestore().collection("menu").get();
+    querySnapshot.forEach(function (doc) {
+      menu.push({
+        id: doc.id,
+        title: doc.data().title,
+        description: doc.data().description,
+        price: doc.data().price,
+        imgSrc: doc.data().imgSrc || "",
+        category: doc.data().category,
+        position: doc.data().position,
+      });
+    });
+  } catch (error) {
+    console.log("Error getting documents: ", error);
+    menu = [];
+  }
+
+  return {
+    props: {
+      menu,
+    },
+  };
+};

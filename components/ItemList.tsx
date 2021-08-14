@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect } from "react";
+import { useMemo } from "react";
 import ItemCard from "./ItemCard";
 import ItemSuaceCard from "./ItemSuaceCard";
 import { IMenuItem } from "../Interfaces";
@@ -16,76 +16,54 @@ interface Props {
 const ItemList = ({ menu }: Props) => {
   const responsiveTheme = useTheme();
   const isSmall = useMediaQuery(responsiveTheme.breakpoints.down("sm"));
-  const [test, setTest] = useState<any>([]);
-  console.log("menu.docs[0].data() :>> ", menu.docs[0].data());
-
-  useEffect(() => {
-    let items: IMenuItem[] = [];
-    menu.docs.forEach((doc: any) => {
-      items.push(
-        Object.assign({
-          id: doc.id,
-          title: doc.data().title,
-          description: doc.data().description,
-          price: doc.data().price,
-          imgSrc: doc.data().imgSrc,
-          category: doc.data().category,
-          position: doc.data().position,
-        })
-      );
-    });
-    setTest(items);
-  }, [menu]);
-
-  console.log("test :>> ", test);
 
   const sandwichMenu = useMemo(() => {
-    return test
+    return menu
       .filter((item: IMenuItem) => item.category === "sandwiches")
       .sort((a: IMenuItem, b: IMenuItem) => (a.position < b.position ? -1 : 1));
-  }, [test]);
+  }, [menu]);
 
   const burgerMenu = useMemo(() => {
-    return test
+    return menu
       .filter((item: IMenuItem) => item.category === "burgers")
       .sort((a: IMenuItem, b: IMenuItem) => (a.position < b.position ? -1 : 1));
-  }, [test]);
+  }, [menu]);
 
   const tendersMenu = useMemo(() => {
-    return test
+    return menu
       .filter((item: IMenuItem) => item.category === "tenders")
       .sort((a: IMenuItem, b: IMenuItem) => (a.position < b.position ? -1 : 1));
-  }, [test]);
+  }, [menu]);
 
   const saladMenu = useMemo(() => {
-    return test
+    return menu
       .filter((item: IMenuItem) => item.category === "salads")
       .sort((a: IMenuItem, b: IMenuItem) => (a.position < b.position ? -1 : 1));
-  }, [test]);
+  }, [menu]);
 
   const entreesMenu = useMemo(() => {
-    return test
+    return menu
       .filter((item: IMenuItem) => item.category === "entrees")
       .sort((a: IMenuItem, b: IMenuItem) => (a.position < b.position ? -1 : 1));
-  }, [test]);
+  }, [menu]);
 
   const boxMenu = useMemo(() => {
-    return test
+    return menu
       .filter((item: IMenuItem) => item.category === "boxes")
       .sort((a: IMenuItem, b: IMenuItem) => (a.position < b.position ? -1 : 1));
-  }, [test]);
+  }, [menu]);
 
   const pizzaMenu = useMemo(() => {
-    return test
+    return menu
       .filter((item: IMenuItem) => item.category === "pizzas")
       .sort((a: IMenuItem, b: IMenuItem) => (a.position < b.position ? -1 : 1));
-  }, [test]);
+  }, [menu]);
 
   const drinkMenu = useMemo(() => {
-    return test
+    return menu
       .filter((item: IMenuItem) => item.category === "drinks")
       .sort((a: IMenuItem, b: IMenuItem) => (a.position < b.position ? -1 : 1));
-  }, [test]);
+  }, [menu]);
 
   return (
     <div>

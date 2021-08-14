@@ -11,7 +11,6 @@ import Card from "@material-ui/core/Card";
 import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
-import placeholder from "../public/images/placeholder.jpg";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -93,8 +92,8 @@ function ItemCard({ title, description, price, imgSrc }: Props) {
     >
       <CardMedia
         className={classes.media}
-        image={imgSrc}
-        src={imgSrc}
+        image={imgSrc || "/images/placeholder.jpg"}
+        src={imgSrc || "/images/placeholder.jpg"}
         title={title}
       />
 
