@@ -1,13 +1,15 @@
 import { useMemo } from "react";
-import ItemCard from "./ItemCard";
-import ItemSuaceCard from "./ItemSuaceCard";
-import { IMenuItem } from "../Interfaces";
-// styles
+// mui
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { useTheme } from "@material-ui/core/styles";
 import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
+// components
+import ItemCard from "./ItemCard";
+import ItemSuaceCard from "./ItemSuaceCard";
+// utils
+import { IMenuItem } from "../Interfaces";
 
 interface Props {
   menu: any;

@@ -24,7 +24,6 @@ import Toolbar from "@material-ui/core/Toolbar";
 import ItemList from "../components/ItemList";
 // utils
 import firebase from "../firebase/clientApp";
-import { useCollection } from "react-firebase-hooks/firestore";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { IMenuItem } from "../Interfaces";
@@ -79,11 +78,6 @@ const Home: NextPage = ({ menu }: any) => {
       once: true,
     });
   }, []);
-
-  // const [menu, menuLoading, menuError] = useCollection(
-  //   firebase.firestore().collection("menu"),
-  //   {}
-  // );
 
   const goToTop = (): void => {
     window.scroll({
@@ -154,7 +148,13 @@ const Home: NextPage = ({ menu }: any) => {
             style={{ backgroundColor: "whitesmoke", zIndex: 9999 }}
           >
             <Toolbar>
-              <img src="/images/logo.png" alt="logo" height="50" width="50" />
+              <img
+                src="/images/logo.png"
+                alt="logo"
+                height="50"
+                width="50"
+                onClick={goToTop}
+              />
             </Toolbar>
           </AppBar>
           <Hidden mdDown>

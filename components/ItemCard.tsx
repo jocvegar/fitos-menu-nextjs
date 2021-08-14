@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from "react";
-// styles
+// mui
 import {
   makeStyles,
   Theme,
@@ -81,7 +81,6 @@ function ItemCard({ title, description, price, imgSrc }: Props) {
     setOverlayHeight("0%");
     setShowTitle(true);
   };
-  console.log("imgSrc :>> ", imgSrc);
 
   return (
     <Card

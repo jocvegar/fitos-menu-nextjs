@@ -22,7 +22,7 @@ export default class MyDocument extends Document {
           <meta property="og:url" content="https://menu.fitoshn.com/" />
           <meta property="og:title" content="Fitos" />
           <meta property="og:description" content="Siéntete como en casa" />
-          <meta property="og:image" content="" />
+          <meta property="og:image" content="/logo192.png" />
           {/* <!-- Twitter --> */}
           <meta property="twitter:card" content="summary_large_image" />
           <meta property="twitter:url" content="https://menu.fitoshn.com/" />
