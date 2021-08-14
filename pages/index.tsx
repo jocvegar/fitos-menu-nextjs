@@ -123,6 +123,9 @@ const Home: NextPage = ({ menu }: any) => {
       case 8:
         elementId = "drinks";
         break;
+      case 9:
+        elementId = "postres";
+        break;
       default:
         elementId = "entrees";
         break;
@@ -183,6 +186,7 @@ const Home: NextPage = ({ menu }: any) => {
                   "Boxes",
                   "Pizzas",
                   "Drinks",
+                  "Postres",
                 ].map((text, idx) => (
                   <ListItem button key={text} style={{ textAlign: "end" }}>
                     <ListItemText
