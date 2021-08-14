@@ -7,7 +7,32 @@ export default class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
-          <meta name="theme-color" />
+          <meta charSet="utf-8" />
+          <link rel="icon" href="/favicon.ico" />
+          <meta name="theme-color" content="#000000" />
+          <meta name="title" content="Fitos" />
+          <meta name="description" content="Siéntete como en casa" />
+          <meta name="keywords" content="comida, Honduras, Fitos" />
+          <meta name="robots" content="index, follow" />
+          <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
+          <meta name="language" content="Spanish" />
+          <meta name="author" content="Jose Vega" />
+          {/* <!-- Open Graph / Facebook --> */}
+          <meta property="og:type" content="website" />
+          <meta property="og:url" content="https://menu.fitoshn.com/" />
+          <meta property="og:title" content="Fitos" />
+          <meta property="og:description" content="Siéntete como en casa" />
+          <meta property="og:image" content="" />
+          {/* <!-- Twitter --> */}
+          <meta property="twitter:card" content="summary_large_image" />
+          <meta property="twitter:url" content="https://menu.fitoshn.com/" />
+          <meta property="twitter:title" content="Fitos" />
+          <meta
+            property="twitter:description"
+            content="Siéntete como en casa"
+          />
+          <meta property="twitter:image" content="" />
+          <link rel="apple-touch-icon" href="/logo192.png" />
         </Head>
         <body>
           <Main />

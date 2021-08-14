@@ -139,7 +139,7 @@ const Home: NextPage = ({ menu }: any) => {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Fitos | Menu</title>
+        <title>Fitos</title>
         <meta name="description" content="Sientete como en casa" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
