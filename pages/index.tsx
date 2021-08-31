@@ -103,21 +103,24 @@ const Home: NextPage = ({ menu }: any) => {
         elementId = "tenders";
         break;
       case 4:
-        elementId = "suaces";
+        elementId = "wings";
         break;
       case 5:
-        elementId = "salads";
+        elementId = "suaces";
         break;
       case 6:
-        elementId = "boxes";
+        elementId = "salads";
         break;
       case 7:
-        elementId = "pizzas";
+        elementId = "boxes";
         break;
       case 8:
-        elementId = "drinks";
+        elementId = "pizzas";
         break;
       case 9:
+        elementId = "drinks";
+        break;
+      case 10:
         elementId = "postres";
         break;
       default:
@@ -181,6 +184,7 @@ const Home: NextPage = ({ menu }: any) => {
                   "Sandwiches",
                   "Burgers",
                   "Chicken Tenders",
+                  "Chicken Wings",
                   "Salsas",
                   "Ensaladas",
                   "Boxes",

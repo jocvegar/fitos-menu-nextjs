@@ -37,6 +37,12 @@ const ItemList = ({ menu }: Props) => {
       .sort((a: IMenuItem, b: IMenuItem) => (a.position < b.position ? -1 : 1));
   }, [menu]);
 
+  const wingsMenu = useMemo(() => {
+    return menu
+      .filter((item: IMenuItem) => item.category === "wings")
+      .sort((a: IMenuItem, b: IMenuItem) => (a.position < b.position ? -1 : 1));
+  }, [menu]);
+
   const saladMenu = useMemo(() => {
     return menu
       .filter((item: IMenuItem) => item.category === "salads")
@@ -162,6 +168,33 @@ const ItemList = ({ menu }: Props) => {
           <Grid container spacing={isSmall ? 1 : 4}>
             {tendersMenu &&
               tendersMenu.map((menuItem: IMenuItem) => {
+                return (
+                  <Grid item xs={12} md={4} key={menuItem.id}>
+                    <ItemCard
+                      title={menuItem.title}
+                      description={menuItem.description}
+                      price={menuItem.price}
+                      imgSrc={menuItem.imgSrc}
+                    />
+                  </Grid>
+                );
+              })}
+          </Grid>
+        </div>
+
+        <div id="wings">
+          <div className="titleWrapper">
+            <Typography variant="h4" color="primary" className="mt-10 mr-2">
+              <strong>Chicken Wings</strong>
+            </Typography>
+            <Typography variant="h6" color="secondary">
+              + Lps. 30 orden Papas || + Lps. 45 con Dirty Fries
+            </Typography>
+          </div>
+
+          <Grid container spacing={isSmall ? 1 : 4}>
+            {wingsMenu &&
+              wingsMenu.map((menuItem: IMenuItem) => {
                 return (
                   <Grid item xs={12} md={4} key={menuItem.id}>
                     <ItemCard
