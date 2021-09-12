@@ -10,6 +10,7 @@ import ItemCard from "./ItemCard";
 import ItemSuaceCard from "./ItemSuaceCard";
 // utils
 import { IMenuItem } from "../Interfaces";
+import LazyLoad from "react-lazyload";
 
 interface Props {
   menu: any;
@@ -91,12 +92,14 @@ const ItemList = ({ menu }: Props) => {
               entreesMenu.map((menuItem: IMenuItem) => {
                 return (
                   <Grid item xs={12} md={4} key={menuItem.id}>
-                    <ItemCard
-                      title={menuItem.title}
-                      description={menuItem.description}
-                      price={menuItem.price}
-                      imgSrc={menuItem.imgSrc}
-                    />
+                    <LazyLoad height={200} once>
+                      <ItemCard
+                        title={menuItem.title}
+                        description={menuItem.description}
+                        price={menuItem.price}
+                        imgSrc={menuItem.imgSrc}
+                      />
+                    </LazyLoad>
                   </Grid>
                 );
               })}
@@ -117,12 +120,14 @@ const ItemList = ({ menu }: Props) => {
               sandwichMenu.map((menuItem: IMenuItem) => {
                 return (
                   <Grid item xs={12} md={4} key={menuItem.id}>
-                    <ItemCard
-                      title={menuItem.title}
-                      description={menuItem.description}
-                      price={menuItem.price}
-                      imgSrc={menuItem.imgSrc}
-                    />
+                    <LazyLoad height={200} once>
+                      <ItemCard
+                        title={menuItem.title}
+                        description={menuItem.description}
+                        price={menuItem.price}
+                        imgSrc={menuItem.imgSrc}
+                      />
+                    </LazyLoad>
                   </Grid>
                 );
               })}
@@ -143,12 +148,14 @@ const ItemList = ({ menu }: Props) => {
               burgerMenu.map((menuItem: IMenuItem) => {
                 return (
                   <Grid item xs={12} md={4} key={menuItem.id}>
-                    <ItemCard
-                      title={menuItem.title}
-                      description={menuItem.description}
-                      price={menuItem.price}
-                      imgSrc={menuItem.imgSrc}
-                    />
+                    <LazyLoad height={200} once>
+                      <ItemCard
+                        title={menuItem.title}
+                        description={menuItem.description}
+                        price={menuItem.price}
+                        imgSrc={menuItem.imgSrc}
+                      />
+                    </LazyLoad>
                   </Grid>
                 );
               })}
@@ -170,12 +177,14 @@ const ItemList = ({ menu }: Props) => {
               tendersMenu.map((menuItem: IMenuItem) => {
                 return (
                   <Grid item xs={12} md={4} key={menuItem.id}>
-                    <ItemCard
-                      title={menuItem.title}
-                      description={menuItem.description}
-                      price={menuItem.price}
-                      imgSrc={menuItem.imgSrc}
-                    />
+                    <LazyLoad height={200} once>
+                      <ItemCard
+                        title={menuItem.title}
+                        description={menuItem.description}
+                        price={menuItem.price}
+                        imgSrc={menuItem.imgSrc}
+                      />
+                    </LazyLoad>
                   </Grid>
                 );
               })}
@@ -197,12 +206,14 @@ const ItemList = ({ menu }: Props) => {
               wingsMenu.map((menuItem: IMenuItem) => {
                 return (
                   <Grid item xs={12} md={4} key={menuItem.id}>
-                    <ItemCard
-                      title={menuItem.title}
-                      description={menuItem.description}
-                      price={menuItem.price}
-                      imgSrc={menuItem.imgSrc}
-                    />
+                    <LazyLoad height={200} once>
+                      <ItemCard
+                        title={menuItem.title}
+                        description={menuItem.description}
+                        price={menuItem.price}
+                        imgSrc={menuItem.imgSrc}
+                      />
+                    </LazyLoad>
                   </Grid>
                 );
               })}
@@ -240,12 +251,14 @@ const ItemList = ({ menu }: Props) => {
               saladMenu.map((menuItem: IMenuItem) => {
                 return (
                   <Grid item xs={12} md={4} key={menuItem.id}>
-                    <ItemCard
-                      title={menuItem.title}
-                      description={menuItem.description}
-                      price={menuItem.price}
-                      imgSrc={menuItem.imgSrc}
-                    />
+                    <LazyLoad height={200} once>
+                      <ItemCard
+                        title={menuItem.title}
+                        description={menuItem.description}
+                        price={menuItem.price}
+                        imgSrc={menuItem.imgSrc}
+                      />
+                    </LazyLoad>
                   </Grid>
                 );
               })}
@@ -261,12 +274,14 @@ const ItemList = ({ menu }: Props) => {
               boxMenu.map((menuItem: IMenuItem) => {
                 return (
                   <Grid item xs={12} md={4} key={menuItem.id}>
-                    <ItemCard
-                      title={menuItem.title}
-                      description={menuItem.description}
-                      price={menuItem.price}
-                      imgSrc={menuItem.imgSrc}
-                    />
+                    <LazyLoad height={200} once>
+                      <ItemCard
+                        title={menuItem.title}
+                        description={menuItem.description}
+                        price={menuItem.price}
+                        imgSrc={menuItem.imgSrc}
+                      />
+                    </LazyLoad>
                   </Grid>
                 );
               })}
@@ -282,12 +297,14 @@ const ItemList = ({ menu }: Props) => {
               pizzaMenu.map((menuItem: IMenuItem) => {
                 return (
                   <Grid item xs={12} md={4} key={menuItem.id}>
-                    <ItemCard
-                      title={menuItem.title}
-                      description={menuItem.description}
-                      price={menuItem.price}
-                      imgSrc={menuItem.imgSrc}
-                    />
+                    <LazyLoad height={200} once>
+                      <ItemCard
+                        title={menuItem.title}
+                        description={menuItem.description}
+                        price={menuItem.price}
+                        imgSrc={menuItem.imgSrc}
+                      />
+                    </LazyLoad>
                   </Grid>
                 );
               })}
@@ -303,12 +320,14 @@ const ItemList = ({ menu }: Props) => {
               drinkMenu.map((menuItem: IMenuItem) => {
                 return (
                   <Grid item xs={12} md={4} key={menuItem.id}>
-                    <ItemCard
-                      title={menuItem.title}
-                      description={menuItem.description}
-                      price={menuItem.price}
-                      imgSrc={menuItem.imgSrc}
-                    />
+                    <LazyLoad height={200} once>
+                      <ItemCard
+                        title={menuItem.title}
+                        description={menuItem.description}
+                        price={menuItem.price}
+                        imgSrc={menuItem.imgSrc}
+                      />
+                    </LazyLoad>
                   </Grid>
                 );
               })}
@@ -324,12 +343,14 @@ const ItemList = ({ menu }: Props) => {
               postresMenu.map((menuItem: IMenuItem) => {
                 return (
                   <Grid item xs={12} md={4} key={menuItem.id}>
-                    <ItemCard
-                      title={menuItem.title}
-                      description={menuItem.description}
-                      price={menuItem.price}
-                      imgSrc={menuItem.imgSrc}
-                    />
+                    <LazyLoad height={200} once>
+                      <ItemCard
+                        title={menuItem.title}
+                        description={menuItem.description}
+                        price={menuItem.price}
+                        imgSrc={menuItem.imgSrc}
+                      />
+                    </LazyLoad>
                   </Grid>
                 );
               })}

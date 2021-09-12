@@ -156,6 +156,7 @@ const Home: NextPage = ({ menu }: any) => {
                 alt="logo"
                 height="50"
                 width="50"
+                style={{ cursor: "pointer" }}
                 onClick={goToTop}
               />
             </Toolbar>
