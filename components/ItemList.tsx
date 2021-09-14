@@ -231,7 +231,7 @@ const ItemList = ({ menu }: Props) => {
               "Buffalo Habanero",
               "Strawberry Honey",
               "Chipotle",
-              "Mandarina",
+              "Teriyaki",
             ].map((item, idx) => {
               return (
                 <Grid item xs={12} md={4} key={idx}>
