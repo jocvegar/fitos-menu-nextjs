@@ -1,34 +1,34 @@
 /* eslint-disable @next/next/no-img-element */
-import React, { useEffect } from "react";
-import { GetStaticProps } from "next";
-import type { NextPage } from "next";
-import Head from "next/head";
-// styles
-import styles from "../styles/Home.module.css";
+import AppBar from "@material-ui/core/AppBar"
+import Box from "@material-ui/core/Box"
+import Drawer from "@material-ui/core/Drawer"
+import Hidden from "@material-ui/core/Hidden"
+import List from "@material-ui/core/List"
+import ListItem from "@material-ui/core/ListItem"
+import ListItemText from "@material-ui/core/ListItemText"
 // mui
 import {
   createTheme,
-  ThemeProvider,
   makeStyles,
-} from "@material-ui/core/styles";
-import Hidden from "@material-ui/core/Hidden";
-import Typography from "@material-ui/core/Typography";
-import Drawer from "@material-ui/core/Drawer";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import Box from "@material-ui/core/Box";
-import ListItemText from "@material-ui/core/ListItemText";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
+  ThemeProvider,
+} from "@material-ui/core/styles"
+import Toolbar from "@material-ui/core/Toolbar"
+import Typography from "@material-ui/core/Typography"
+import AOS from "aos"
+import "aos/dist/aos.css"
+import type { NextPage } from "next"
+import { GetStaticProps } from "next"
+import Head from "next/head"
+import React, { useEffect } from "react"
 // components
-import ItemList from "../components/ItemList";
+import ItemList from "../components/ItemList"
 // utils
-import firebase from "../firebase/clientApp";
-import AOS from "aos";
-import "aos/dist/aos.css";
-import { IMenuItem } from "../Interfaces";
+import firebase from "../firebase/clientApp"
+import { IMenuItem } from "../Interfaces"
+// styles
+import styles from "../styles/Home.module.css"
 
-const drawerWidth = 240;
+const drawerWidth = 240
 
 const theme = createTheme({
   typography: {
@@ -42,7 +42,7 @@ const theme = createTheme({
       main: "#ff9d2d",
     },
   },
-});
+})
 
 const cardStyles = makeStyles({
   root: {
@@ -68,73 +68,73 @@ const cardStyles = makeStyles({
   content: {
     flexGrow: 1,
   },
-});
+})
 
 const Home: NextPage = ({ menu }: any) => {
-  const classes = cardStyles();
+  const classes = cardStyles()
 
   useEffect(() => {
     AOS.init({
       once: true,
-    });
-  }, []);
+    })
+  }, [])
 
   const goToTop = (): void => {
     window.scroll({
       top: 0,
       left: 0,
       behavior: "smooth",
-    });
-  };
+    })
+  }
 
   const goToElment = (idx: number): void => {
-    let elementId = "";
+    let elementId = ""
     switch (idx) {
       case 0:
-        elementId = "entrees";
-        break;
+        elementId = "entrees"
+        break
       case 1:
-        elementId = "sandwiches";
-        break;
+        elementId = "sandwiches"
+        break
       case 2:
-        elementId = "burgers";
-        break;
+        elementId = "burgers"
+        break
       case 3:
-        elementId = "tenders";
-        break;
+        elementId = "tenders"
+        break
       case 4:
-        elementId = "wings";
-        break;
+        elementId = "wings"
+        break
       case 5:
-        elementId = "suaces";
-        break;
+        elementId = "suaces"
+        break
       case 6:
-        elementId = "salads";
-        break;
+        elementId = "salads"
+        break
       case 7:
-        elementId = "boxes";
-        break;
+        elementId = "boxes"
+        break
       case 8:
-        elementId = "pizzas";
-        break;
+        elementId = "pizzas"
+        break
       case 9:
-        elementId = "drinks";
-        break;
+        elementId = "drinks"
+        break
       case 10:
-        elementId = "postres";
-        break;
+        elementId = "postres"
+        break
       default:
-        elementId = "entrees";
-        break;
+        elementId = "entrees"
+        break
     }
-    const element = document.getElementById(elementId)!;
-    const elementPosition = element.offsetTop;
+    const element = document.getElementById(elementId)!
+    const elementPosition = element.offsetTop
 
     window.scrollTo({
       top: elementPosition - 45, //add your necessary value
       behavior: "smooth", //Smooth transition to roll
-    });
-  };
+    })
+  }
 
   return (
     <div className={styles.container}>
@@ -219,16 +219,21 @@ const Home: NextPage = ({ menu }: any) => {
         </ThemeProvider>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  let menu: IMenuItem[] = [];
+  let menu: IMenuItem[] = []
+
   try {
-    const querySnapshot = await firebase.firestore().collection("menu").get();
-    querySnapshot.forEach(function (doc) {
+    const querySnapshot = await firebase
+      .firestore()
+      .collection("menu")
+      .where("available", "==", true)
+      .get()
+    querySnapshot.forEach(async function (doc) {
       menu.push({
         id: doc.id,
         title: doc.data().title,
@@ -237,16 +242,16 @@ export const getStaticProps: GetStaticProps = async (context) => {
         imgSrc: doc.data().imgSrc || "",
         category: doc.data().category,
         position: doc.data().position,
-      });
-    });
+      })
+    })
   } catch (error) {
-    console.log("Error getting documents: ", error);
-    menu = [];
+    console.log("Error getting documents: ", error)
+    menu = []
   }
 
   return {
     props: {
       menu,
     },
-  };
-};
+  }
+}
