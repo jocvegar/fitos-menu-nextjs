@@ -134,7 +134,7 @@ const Home: NextPage = ({ menu }: any) => {
     const elementPosition = element.offsetTop
 
     window.scrollTo({
-      top: elementPosition - 50, //add your necessary value
+      top: elementPosition - 60, //add your necessary value
       behavior: "smooth", //Smooth transition to roll
     })
   }
