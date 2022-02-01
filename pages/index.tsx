@@ -115,12 +115,15 @@ const Home: NextPage = ({ menu }: any) => {
         elementId = "boxes"
         break
       case 8:
-        elementId = "pizzas"
+        elementId = "ribs"
         break
       case 9:
-        elementId = "drinks"
+        elementId = "pizzas"
         break
       case 10:
+        elementId = "drinks"
+        break
+      case 11:
         elementId = "postres"
         break
       default:
@@ -131,7 +134,7 @@ const Home: NextPage = ({ menu }: any) => {
     const elementPosition = element.offsetTop
 
     window.scrollTo({
-      top: elementPosition - 45, //add your necessary value
+      top: elementPosition - 50, //add your necessary value
       behavior: "smooth", //Smooth transition to roll
     })
   }
@@ -189,6 +192,7 @@ const Home: NextPage = ({ menu }: any) => {
                   "Salsas",
                   "Ensaladas",
                   "Boxes",
+                  "Ribs",
                   "Pizzas",
                   "Drinks",
                   "Postres",
