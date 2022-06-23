@@ -115,20 +115,20 @@ const Home: NextPage = ({ menu }: any) => {
         elementId = "boxes"
         break
       case 8:
-        elementId = "ribs"
-        break
-      case 9:
-        elementId = "pizzas"
-        break
-      case 10:
         elementId = "drinks"
-        break
-      case 11:
-        elementId = "postres"
         break
       default:
         elementId = "entrees"
         break
+      // case 8:
+      //   elementId = "ribs"
+      //   break
+      // case 9:
+      //   elementId = "pizzas"
+      //   break
+      // case 11:
+      //   elementId = "postres"
+      //   break
     }
     const element = document.getElementById(elementId)!
     const elementPosition = element.offsetTop
@@ -192,10 +192,10 @@ const Home: NextPage = ({ menu }: any) => {
                   "Salsas",
                   "Ensaladas",
                   "Boxes",
-                  "Ribs",
-                  "Pizzas",
                   "Drinks",
-                  "Postres",
+                  // "Ribs",
+                  // "Pizzas",
+                  // "Postres",
                 ].map((text, idx) => (
                   <ListItem button key={text} style={{ textAlign: "end" }}>
                     <ListItemText

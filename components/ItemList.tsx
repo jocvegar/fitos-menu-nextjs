@@ -62,17 +62,17 @@ const ItemList = ({ menu }: Props) => {
       .sort((a: IMenuItem, b: IMenuItem) => (a.position < b.position ? -1 : 1))
   }, [menu])
 
-  const pizzaMenu = useMemo(() => {
-    return menu
-      .filter((item: IMenuItem) => item.category === "pizzas")
-      .sort((a: IMenuItem, b: IMenuItem) => (a.position < b.position ? -1 : 1))
-  }, [menu])
+  // const pizzaMenu = useMemo(() => {
+  //   return menu
+  //     .filter((item: IMenuItem) => item.category === "pizzas")
+  //     .sort((a: IMenuItem, b: IMenuItem) => (a.position < b.position ? -1 : 1))
+  // }, [menu])
 
-  const ribMenu = useMemo(() => {
-    return menu
-      .filter((item: IMenuItem) => item.category === "ribs")
-      .sort((a: IMenuItem, b: IMenuItem) => (a.position < b.position ? -1 : 1))
-  }, [menu])
+  // const ribMenu = useMemo(() => {
+  //   return menu
+  //     .filter((item: IMenuItem) => item.category === "ribs")
+  //     .sort((a: IMenuItem, b: IMenuItem) => (a.position < b.position ? -1 : 1))
+  // }, [menu])
 
   const drinkMenu = useMemo(() => {
     return menu
@@ -80,11 +80,11 @@ const ItemList = ({ menu }: Props) => {
       .sort((a: IMenuItem, b: IMenuItem) => (a.position < b.position ? -1 : 1))
   }, [menu])
 
-  const postresMenu = useMemo(() => {
-    return menu
-      .filter((item: IMenuItem) => item.category === "postres")
-      .sort((a: IMenuItem, b: IMenuItem) => (a.position < b.position ? -1 : 1))
-  }, [menu])
+  // const postresMenu = useMemo(() => {
+  //   return menu
+  //     .filter((item: IMenuItem) => item.category === "postres")
+  //     .sort((a: IMenuItem, b: IMenuItem) => (a.position < b.position ? -1 : 1))
+  // }, [menu])
 
   return (
     <div>
@@ -294,7 +294,7 @@ const ItemList = ({ menu }: Props) => {
           </Grid>
         </div>
 
-        <div id="ribs">
+        {/* <div id="ribs">
           <Typography variant="h4" color="primary" className="mt-10">
             <strong>Ribs</strong>
           </Typography>
@@ -315,9 +315,9 @@ const ItemList = ({ menu }: Props) => {
                 )
               })}
           </Grid>
-        </div>
+        </div> */}
 
-        <div id="pizzas">
+        {/* <div id="pizzas">
           <Typography variant="h4" color="primary" className="mt-10">
             <strong>Pizzas</strong>
           </Typography>
@@ -338,7 +338,7 @@ const ItemList = ({ menu }: Props) => {
                 )
               })}
           </Grid>
-        </div>
+        </div> */}
 
         <div id="drinks">
           <Typography variant="h4" color="primary" className="mt-10">
@@ -363,7 +363,7 @@ const ItemList = ({ menu }: Props) => {
           </Grid>
         </div>
 
-        <div id="postres">
+        {/* <div id="postres">
           <Typography variant="h4" color="primary" className="mt-10">
             <strong>Postres</strong>
           </Typography>
@@ -384,7 +384,7 @@ const ItemList = ({ menu }: Props) => {
                 )
               })}
           </Grid>
-        </div>
+        </div> */}
       </Box>
     </div>
   )

@@ -1,16 +1,16 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback } from "react"
 // mui
 import {
   makeStyles,
   Theme,
   createStyles,
   useTheme,
-} from "@material-ui/core/styles";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
-import Card from "@material-ui/core/Card";
-import CardMedia from "@material-ui/core/CardMedia";
-import Typography from "@material-ui/core/Typography";
-import Box from "@material-ui/core/Box";
+} from "@material-ui/core/styles"
+import useMediaQuery from "@material-ui/core/useMediaQuery"
+import Card from "@material-ui/core/Card"
+import CardMedia from "@material-ui/core/CardMedia"
+import Typography from "@material-ui/core/Typography"
+import Box from "@material-ui/core/Box"
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -49,38 +49,38 @@ const useStyles = makeStyles((theme: Theme) =>
       color: "white",
     },
   })
-);
+)
 
 type Props = {
-  title: string;
-  description: string;
-  price: string;
-  imgSrc: string;
-};
+  title: string
+  description: string
+  price: string
+  imgSrc: string
+}
 
 function ItemCard({ title, description, price, imgSrc }: Props) {
-  const classes = useStyles();
-  const theme = useTheme();
-  const isMdOrBigger = useMediaQuery(theme.breakpoints.up("md"));
+  const classes = useStyles()
+  const theme = useTheme()
+  const isMdOrBigger = useMediaQuery(theme.breakpoints.up("md"))
 
-  const [overlayHeight, setOverlayHeight] = useState("0%");
-  const [showTitle, setShowTitle] = useState(true);
+  const [overlayHeight, setOverlayHeight] = useState("0%")
+  const [showTitle, setShowTitle] = useState(true)
 
   const handleOverlayHeight = useCallback(() => {
-    const initialState = overlayHeight === "100%" ? "0%" : "100%";
-    setOverlayHeight(initialState);
-    setShowTitle(!showTitle);
-  }, [overlayHeight, showTitle]);
+    const initialState = overlayHeight === "100%" ? "0%" : "100%"
+    setOverlayHeight(initialState)
+    setShowTitle(!showTitle)
+  }, [overlayHeight, showTitle])
 
   const showOverLay = (): void => {
-    setOverlayHeight("100%");
-    setShowTitle(false);
-  };
+    setOverlayHeight("100%")
+    setShowTitle(false)
+  }
 
   const hideOverLay = (): void => {
-    setOverlayHeight("0%");
-    setShowTitle(true);
-  };
+    setOverlayHeight("0%")
+    setShowTitle(true)
+  }
 
   return (
     <Card
@@ -101,7 +101,6 @@ function ItemCard({ title, description, price, imgSrc }: Props) {
           gutterBottom
           variant={"h3" as any}
           className={classes.mainOverlay}
-          data-aos="fade-right"
         >
           {title}
         </Typography>
@@ -130,7 +129,7 @@ function ItemCard({ title, description, price, imgSrc }: Props) {
         </div>
       </div>
     </Card>
-  );
+  )
 }
 
-export default React.memo(ItemCard);
+export default React.memo(ItemCard)
